@@ -8,11 +8,11 @@
 
 </head>
 <body>
-	<div class = "topBar">	
+	<div class = "topBar">	<!--search bar-->
 		<input class ="center" type="text" name="taskAdd" id = "taskAdd" onkeydown= "if(event.keyCode == 13){ addTask(); this.value = ''; return false; }" >
 		<button onclick="addTask()">Add</button>
 	</div>
-	<table id = "taskList">
+	<table id = "taskList"> <!-- empty table to be filled by JS-->
 		
 
 	</table>
@@ -20,29 +20,29 @@
 
 <script type="text/javascript">
 		function addTask() {
-			var element = document.getElementById("taskList");
-			var row = document.createElement("tr");
-			row.id = document.getElementById("taskAdd").value + "_";
-			var item = document.createElement("td");
+			var element = document.getElementById("taskList"); //table to be filled
+			var row = document.createElement("tr"); //create new row 
+			row.id = document.getElementById("taskAdd").value + "_"; //assign id to newly made table row
+			var item = document.createElement("td"); // 
 
-			item.innerHTML = document.getElementById("taskAdd").value;
+			item.innerHTML = document.getElementById("taskAdd").value; // the the td with the task 
 			
 
-			var done = document.createElement("td");
+			var done = document.createElement("td"); //created new td for the delete row
 			var x = document.createTextNode("X");
 			var task = document.getElementById("taskAdd").value;
-			done.id = document.getElementById("taskAdd").value;
+			done.id = document.getElementById("taskAdd").value; //assign id of td as the task 
 			
-			done.onclick = function(){
+			done.onclick = function(){ //if x is clicked, then this function deletes the entire row
 				var parent = this.parentElement.parentElement;
 				parent.removeChild(row);
 			}
-			done.appendChild(x);
+			done.appendChild(x); // placed  'X' inside done td
 
-			row.appendChild(item);
+			row.appendChild(item); //put both td items within the var row.
 			row.appendChild(done);
 
-			element.appendChild(row);
+			element.appendChild(row); //append row to the table
 		}
 			
 	</script>
